@@ -1,4 +1,6 @@
-from plugin.engine.bing import Bing
+from plugin.engine.minebbs import Minebbs
+from plugin.engine.klpbbs import Klpbbs
+from plugin.engine.spigotmc import Spigot
 from plugin.utils.translate import translate, EN
 
 
@@ -16,7 +18,20 @@ while True:
     if keyword == "exit":
         break
 
-    engine = Bing()
+    engine = Spigot()
 
     for result in engine.search(keyword):
         print_result(result)
+
+    engine = Minebbs()
+
+    for result in engine.search(keyword):
+        print_result(result)
+
+    engine = Klpbbs()
+
+    for result in engine.search(keyword):
+        print_result(result)
+
+
+
