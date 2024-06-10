@@ -16,7 +16,10 @@ class Bing(SearchEngine):
         return bing_url
 
     def search(self, keywords) -> typing.List[SearchResult]:
-        keywords = f"我的世界  {translate(keywords)} 插件"
+        return list(set(self._search(f"我的世界  {translate(keywords)} 插件")) | set(
+            self._search(f"minecraft  {translate(keywords, to_lang=EN)} plugin")))
+
+    def _search(self, keywords) -> typing.List[SearchResult]:
         bing_url = self.get_bing_url(keywords)
         result: typing.List[SearchResult] = []
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0',

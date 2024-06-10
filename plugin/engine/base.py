@@ -9,6 +9,12 @@ class SearchResult:
         self.title = title
         self.summary = summary
 
+    def __eq__(self, other):
+        return self.url == other.url
+
+    def __hash__(self):
+        return hash(self.url)
+
 
 class SearchEngine(ABC):
 
