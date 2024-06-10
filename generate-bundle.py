@@ -4,7 +4,7 @@ import urllib.request
 import zipfile
 import platform
 
-os.system("python3 -m pip install cn_bing_translator requests pyinstaller")
+os.system("python3 -m pip install cn_bing_translator requests lxml pyinstaller")
 if platform.system() == 'Windows':
     urllib.request.urlretrieve("https://github.com/upx/upx/releases/download/v4.2.4/upx-4.2.4-win64.zip",
                                "upx.zip")
