@@ -4,7 +4,7 @@ from plugin.engine.base import SearchResult
 from plugin.engine.bing import Bing
 
 
-class Klpbbs(Bing):
+class Klpbbs:
 
-    def search(self, keywords) -> typing.List[SearchResult]:
-        return super()._search(keywords, site="klpbbs.com")[:3]  # 一般来将,前五个才有价值 # 更加fw,3个
+    def search(self, keywords,engine=Bing()) -> typing.List[SearchResult]:
+        return engine.search(keywords, site="klpbbs.com")[:3]  # 一般来将,前五个才有价值 # 更加fw,3个

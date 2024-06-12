@@ -8,9 +8,7 @@ from lxml.html import etree
 from plugin.utils.translate import translate, EN
 
 
-class Bing(SearchEngine):
-    def search(self, keywords) -> typing.List[SearchResult]:
-        pass
+class Bing:
 
     def get_bing_url(self, keywords):
         keywords = keywords.strip('\n')
@@ -18,8 +16,8 @@ class Bing(SearchEngine):
         bing_url = re.sub(r'\s', '+', bing_url)
         return bing_url
 
-    def _search(self, keywords, site="minebbs.com") -> typing.List[SearchResult]:
-        keywords = f'"{translate(keywords)}" ”插件“ site:{site}'
+    def search(self, keywords, site) -> typing.List[SearchResult]:
+        keywords = f'"{translate(keywords)}" 插件 site:{site}'
         url = self.get_bing_url(keywords)
         result: typing.List[SearchResult] = []
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0',
@@ -37,13 +35,17 @@ class Bing(SearchEngine):
         li_list = tree.xpath('//ol[@id="b_results"]//li[@class="b_algo"]')
         for li in li_list:
             try:
-                h3: str = li.xpath('./h2/a')[0].xpath('string(.)')
+                h3 = li.xpath('./h2/a')[0]
                 p = li.xpath('.//p')[0].xpath('string(.)')
-                url = li.xpath('./div[1]/a/div[2]/div[2]/div/cite')[0].xpath('string(.)')
+                try:
+                    url = li.xpath('./div[1]/a/div[2]/div[2]/div/cite')[0].xpath('string(.)')
+                except IndexError:
+                    url = h3.get('href')
+                h3 = h3.xpath('string(.)')
                 if h3.find("模组") != -1 or h3.find("地图") != -1 or h3.find("插件") == -1:
                     continue
                 result.append(SearchResult(url=url, title=h3, summary=p))
-            except Exception as pri:
-                print(pri)
+            except IndexError:
+                pass
 
         return result

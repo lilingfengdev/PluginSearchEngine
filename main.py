@@ -1,7 +1,8 @@
 from plugin.engine.minebbs import Minebbs
 from plugin.engine.klpbbs import Klpbbs
 from plugin.engine.spigotmc import Spigot
-from plugin.utils.translate import translate, EN
+from plugin.engine.tinksp import Tinksp
+from concurrent.futures import ThreadPoolExecutor, wait
 
 
 def print_result(result):
@@ -18,20 +19,13 @@ while True:
     if keyword == "exit":
         break
 
-    engine = Spigot()
-
-    for result in engine.search(keyword):
-        print_result(result)
-
-    engine = Minebbs()
-
-    for result in engine.search(keyword):
-        print_result(result)
-
-    engine = Klpbbs()
-
-    for result in engine.search(keyword):
-        print_result(result)
-
-
-
+    engine = [Spigot, Tinksp, Minebbs, Klpbbs, ]
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        future_list = []
+        for e in engine:
+            future = executor.submit(e().search, keyword)
+            future_list.append(future)
+        wait(future_list)
+        for future in future_list:
+            for result in future.result():
+                print_result(result)
