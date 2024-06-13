@@ -14,10 +14,6 @@ if platform.system() == 'Windows':
 
 import PyInstaller.__main__
 
-os.mkdir("dist")
 
-flag = ["-F", "main.py", "--optimize", "2"]
-if platform.system() != 'Windows':
-    flag.append("--strip")
-PyInstaller.__main__.run(flag)
+PyInstaller.__main__.run(["main.spec"])
 

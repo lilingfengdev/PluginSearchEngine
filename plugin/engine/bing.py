@@ -1,12 +1,9 @@
 import typing
 
-from plugin.engine.base import SearchEngine, SearchResult
+from plugin.engine.base import SearchResult
 import re
 import requests
 from lxml.html import etree
-
-from plugin.utils.translate import translate, EN
-
 
 class Bing:
 
@@ -17,7 +14,7 @@ class Bing:
         return bing_url
 
     def search(self, keywords, site) -> typing.List[SearchResult]:
-        keywords = f'"{translate(keywords)}" 插件 site:{site}'
+        keywords = f'"{keywords}" 插件 site:{site}'
         url = self.get_bing_url(keywords)
         result: typing.List[SearchResult] = []
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0',

@@ -6,10 +6,10 @@ from concurrent.futures import ThreadPoolExecutor, wait
 
 
 def print_result(result):
-    print(result.title)
-    print(result.summary)
-    print(result.url)
-    print("====================")
+    print(f"\033[1;32m标题: \033[0m{result.title}")
+    print(f"\033[1;34m简介: \033[0m{result.summary}")
+    print(f"\033[1;36mURL: \033[0m{result.url}")
+    print("\033[1;33m====================\033[0m")
     print()
 
 
