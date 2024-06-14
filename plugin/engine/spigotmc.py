@@ -22,7 +22,11 @@ class Spigot(SearchEngine):
             result.append(
                 SpigotResult(url=plug["url"], title=plug["name"], summary=plug["tag"], count=plug["download"]["count"]))
         result.sort(key=lambda obj: obj.count,reverse=True)
-        result = result[:16]
+        result = result[:10]
         for plug in result:
-            plug.summary = translate(plug.summary)
+            try:
+                plug.summary = translate(plug.summary)
+                plug.title = translate(plug.title)
+            except:
+                pass
         return result
