@@ -39,8 +39,6 @@ class Bing:
                 except IndexError:
                     url = h3.get('href')
                 h3 = h3.xpath('string(.)')
-                if h3.find("模组") != -1 or h3.find("地图") != -1 or h3.find("插件") == -1:
-                    continue
                 result.append(SearchResult(url=url, title=h3, summary=p))
             except IndexError:
                 pass

@@ -4,6 +4,9 @@ from plugin.engine.spigotmc import Spigot
 from plugin.engine.tinksp import Tinksp
 from concurrent.futures import ThreadPoolExecutor, wait
 import random
+import colorama
+
+colorama.init(autoreset=True)
 
 
 def print_result(result):
