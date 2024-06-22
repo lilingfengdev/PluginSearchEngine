@@ -4,14 +4,12 @@ from plugin.engine.spigotmc import Spigot
 from plugin.engine.tinksp import Tinksp
 from concurrent.futures import ThreadPoolExecutor, wait
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QTreeWidgetItem
-from PySide6 import QtCore
+# from PySide6 import QtCore
 import sys
 import multiprocessing as m
 from multiprocessing import Process as P
 from ui import Ui_MainWindow
 import pyperclip
-
-QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
 
 def get_result(keyword, q):
     engine = [Spigot, Tinksp, Minebbs, Klpbbs]
