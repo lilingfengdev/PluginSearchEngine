@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>779</width>
+    <height>594</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PluginSearchEngine</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icons/icon.png</normaloff>icons/icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QTreeView {
+	border:none
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <stylestrategy>PreferDefault</stylestrategy>
+           </font>
+          </property>
+          <property name="mouseTracking">
+           <bool>false</bool>
+          </property>
+          <property name="tabletTracking">
+           <bool>false</bool>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::DefaultContextMenu</enum>
+          </property>
+          <property name="accessibleName">
+           <string/>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="1">
+              <widget class="QPushButton" name="searchButton">
+               <property name="text">
+                <string>搜索</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLineEdit" name="searchLine">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="placeholderText">
+                <string>请输入你想查询的插件</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTreeWidget" name="outputTreeWidget">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustIgnored</enum>
+        </property>
+        <property name="showDropIndicator" stdset="0">
+         <bool>true</bool>
+        </property>
+        <property name="indentation">
+         <number>20</number>
+        </property>
+        <property name="rootIsDecorated">
+         <bool>false</bool>
+        </property>
+        <property name="uniformRowHeights">
+         <bool>false</bool>
+        </property>
+        <property name="itemsExpandable">
+         <bool>true</bool>
+        </property>
+        <property name="sortingEnabled">
+         <bool>false</bool>
+        </property>
+        <property name="animated">
+         <bool>false</bool>
+        </property>
+        <property name="allColumnsShowFocus">
+         <bool>false</bool>
+        </property>
+        <property name="headerHidden">
+         <bool>false</bool>
+        </property>
+        <property name="expandsOnDoubleClick">
+         <bool>true</bool>
+        </property>
+        <property name="columnCount">
+         <number>3</number>
+        </property>
+        <attribute name="headerVisible">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="headerCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="headerMinimumSectionSize">
+         <number>25</number>
+        </attribute>
+        <attribute name="headerDefaultSectionSize">
+         <number>100</number>
+        </attribute>
+        <attribute name="headerHighlightSections">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>名称</string>
+         </property>
+         <property name="textAlignment">
+          <set>AlignLeading|AlignVCenter</set>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>URL</string>
+         </property>
+         <property name="textAlignment">
+          <set>AlignTrailing|AlignVCenter</set>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>简介</string>
+         </property>
+         <property name="textAlignment">
+          <set>AlignCenter</set>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <action name="actionAbout">
+   <property name="text">
+    <string>关于作者</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+A</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>查看用法</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionSearchType">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/radio-circle-marked.png</normaloff>icons/radio-circle-marked.png</iconset>
+   </property>
+   <property name="text">
+    <string>类型搜索</string>
+   </property>
+  </action>
+  <action name="actionSearchName">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/radio-circle.png</normaloff>icons/radio-circle.png</iconset>
+   </property>
+   <property name="text">
+    <string>名称搜索</string>
+   </property>
+  </action>
+  <action name="actionTextViewer">
+   <property name="text">
+    <string>文本查看器</string>
+   </property>
+  </action>
+  <action name="actionPlayerViewer">
+   <property name="text">
+    <string>音频播放器</string>
+   </property>
+  </action>
+  <action name="actionImageViewer">
+   <property name="text">
+    <string>图像查看器</string>
+   </property>
+  </action>
+  <action name="actionSearchWeb">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/radio-circle.png</normaloff>icons/radio-circle.png</iconset>
+   </property>
+   <property name="text">
+    <string>Web搜索</string>
+   </property>
+  </action>
+  <action name="actionSearchKey">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/radio-circle.png</normaloff>icons/radio-circle.png</iconset>
+   </property>
+   <property name="text">
+    <string>文件关键字搜索</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
