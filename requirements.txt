@@ -1,3 +1,5 @@
 cn_bing_translator
-pyperclip
-colorama
+pyperclip~=1.9.0
+colorama~=0.4.6
+requests~=2.32.3
+lxml~=5.2.2

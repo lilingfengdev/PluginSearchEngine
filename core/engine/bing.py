@@ -1,6 +1,6 @@
 import typing
 
-from plugin.engine.base import SearchResult
+from core.engine.base import SearchResult
 import re
 import requests
 from lxml.html import etree

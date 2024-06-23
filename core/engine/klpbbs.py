@@ -1,7 +1,7 @@
 import typing
 
-from plugin.engine.base import SearchResult
-from plugin.engine.bing import Bing
+from core.engine.base import SearchResult
+from core.engine.bing import Bing
 
 
 class Klpbbs:
