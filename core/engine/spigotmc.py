@@ -1,7 +1,7 @@
 import typing
 
-from plugin.engine.base import SearchEngine, SearchResult
-from plugin.utils.translate import translate, EN
+from core.engine.base import SearchEngine, SearchResult
+from core.utils.translate import translate, EN
 import requests
 import json
 
