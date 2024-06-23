@@ -18,8 +18,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QTransform)
 from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridLayout,
     QGroupBox, QHBoxLayout, QHeaderView, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QTreeWidget,
-    QTreeWidgetItem, QVBoxLayout, QWidget)
+    QMainWindow, QProgressBar, QPushButton, QSizePolicy,
+    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(779, 594)
         icon = QIcon()
-        icon.addFile(u"icons/icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"o.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"QTreeView {\n"
 "	border:none\n"
@@ -103,6 +103,13 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout.addLayout(self.gridLayout)
+
+        self.progressBar = QProgressBar(self.groupBox)
+        self.progressBar.setObjectName(u"progressBar")
+        self.progressBar.setMaximum(100)
+        self.progressBar.setValue(0)
+
+        self.verticalLayout.addWidget(self.progressBar)
 
 
         self.horizontalLayout.addWidget(self.groupBox)
@@ -183,6 +190,7 @@ class Ui_MainWindow(object):
         self.groupBox.setTitle("")
         self.searchButton.setText(QCoreApplication.translate("MainWindow", u"\u641c\u7d22", None))
         self.searchLine.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8bf7\u8f93\u5165\u4f60\u60f3\u67e5\u8be2\u7684\u63d2\u4ef6", None))
+        self.progressBar.setFormat(QCoreApplication.translate("MainWindow", u"  \u672a\u5f00\u59cb", None))
         ___qtreewidgetitem = self.outputTreeWidget.headerItem()
         ___qtreewidgetitem.setText(2, QCoreApplication.translate("MainWindow", u"\u7b80\u4ecb", None));
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"URL", None));
