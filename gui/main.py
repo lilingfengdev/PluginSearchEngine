@@ -1,7 +1,6 @@
 from core.search import search
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QTreeWidgetItem
-from PySide6.QtCore import QObject, QThread, Signal, Slot
-# from PySide6 import QtCore
+from PySide6.QtCore import QObject, QThread, Signal
 import sys
 from ui import Ui_MainWindow
 import pyperclip
@@ -12,12 +11,16 @@ class Worker(QObject):
 
     def __init__(self):
         super().__init__()
-        print("000")
+        # print("000")
 
     def work(self, keyword):
-        print(111)
-        results = search(keyword)
-        self._signal.emit(results)
+        try:
+            results = search(keyword)
+            print("searching...")
+            self._signal.emit(results)
+            print("emitted signal _")
+        except Exception as e:
+            print(e)
 
 
 class MainWindow(QMainWindow):
@@ -32,28 +35,29 @@ class MainWindow(QMainWindow):
         self.worker._signal.connect(self.shower)
         self.worker.moveToThread(self.worker_thread)
         self.a.connect(self.worker.work)
-        self.ui.searchButton.clicked.connect(self.search)
-        self.ui.outputTreeWidget.itemDoubleClicked.connect(self.copyUrl)
+        self.ui.searchButton.clicked.connect(self.searcher)
+        self.ui.outputTreeWidget.itemDoubleClicked.connect(self.copyurl)
         self.worker_thread.start()
 
-    def search(self):
+    def searcher(self):
         keyword = self.ui.searchLine.text()
         self.ui.outputTreeWidget.clear()
         self.a.emit(keyword)
 
     def shower(self, results):
         for result in results:
-            num = results.index(result)
             title = QTreeWidgetItem(self.ui.outputTreeWidget, [result.title, result.url, result.summary])
 
-    def copyUrl(self, item):
+    def copyurl(self, item):
         # copy a text to the clipboard.
         pyperclip.copy(item.text(1))
-        QMessageBox.information(self, "Copied!", "已将该插件链接复制到剪贴板。")
+        QMessageBox.information(self, "Copied!", "Copied the link to the clipboard!")
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
+    QMessageBox.information(window, "Usage", """1. Enter a keyword in the search box and click the search button.
+2. Double click on the link to copy it to the clipboard.""")
     window.show()
     sys.exit(app.exec())

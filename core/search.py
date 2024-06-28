@@ -20,4 +20,4 @@ def search(keyword: str) -> List[SearchResult]:
         for future in future_list:
             for result in future.result():
                 results.append(result)
-    return result
+    return results
