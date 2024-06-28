@@ -12,3 +12,7 @@
 ## GUI
 
 GUI 版本目前主要由[氿月](https://github.com/Lafcadia)进行维护，支持原版的所有功能，并且同步更新。对于萌新相对较友好。
+
+### 环境配置
+1. 第三方模块要求参考 requirements.txt。
+2. 请使用 PyCharm（不使用其它IDE的理由见 Issue #7 #8）。
