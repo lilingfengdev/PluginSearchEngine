@@ -1,1 +1,0 @@
-nuitka --onefile --windows-icon-from-ico=o.ico pse.py --windows-console-mode=disable --enable-plugin=pyside6

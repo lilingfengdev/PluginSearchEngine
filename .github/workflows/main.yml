@@ -22,9 +22,12 @@ jobs:
         uses: actions/setup-python@v3
         with:
             python-version: "3.11"
-      - name: Install Dependencies and Generate Bundle
-        run: |
-          python generate-bundle.py
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Install Build Dependencies
+        run: pip install nuitka imageio
+      - name: Build
+        run: python build.py
       - name: Auto release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:

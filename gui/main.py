@@ -2,7 +2,7 @@ from core.search import search
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QTreeWidgetItem
 from PySide6.QtCore import QObject, QThread, Signal
 import sys
-from ui import Ui_MainWindow
+from gui.ui import Ui_MainWindow
 import pyperclip
 
 
@@ -55,13 +55,13 @@ class MainWindow(QMainWindow):
     def copyurl(self, item):
         # copy a text to the clipboard.
         pyperclip.copy(item.text(1))
-        QMessageBox.information(self, "Copied!", "Copied the link to the clipboard!")
+        QMessageBox.information(self, "Copied!", "已将链接复制到剪贴板！")
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    QMessageBox.information(window, "Usage", """1. Enter a keyword in the search box and click the search button.
-2. Double click on the link to copy it to the clipboard.""")
+    QMessageBox.information(window, "Usage", """1. 在搜索框中输入关键字，点击搜索按钮。
+2. 双击链接将其复制到剪贴板。""")
     window.show()
     sys.exit(app.exec())
