@@ -9,7 +9,7 @@ class Bing:
 
     def get_bing_url(self, keywords):
         keywords = keywords.strip('\n')
-        bing_url = re.sub(r'^', 'https://cn.bing.com/search?q=', keywords)
+        bing_url = re.sub(r'^', 'https://www.bing.com/search?q=', keywords)
         bing_url = re.sub(r'\s', '+', bing_url)
         return bing_url
 

@@ -61,13 +61,13 @@
            <bool>false</bool>
           </property>
           <property name="contextMenuPolicy">
-           <enum>Qt::DefaultContextMenu</enum>
+           <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
           </property>
           <property name="accessibleName">
            <string/>
           </property>
           <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
           </property>
           <property name="autoFillBackground">
            <bool>false</bool>
@@ -76,7 +76,7 @@
            <string/>
           </property>
           <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
           </property>
           <property name="flat">
            <bool>false</bool>
@@ -84,13 +84,6 @@
           <layout class="QVBoxLayout" name="verticalLayout">
            <item>
             <layout class="QGridLayout" name="gridLayout">
-             <item row="0" column="1">
-              <widget class="QPushButton" name="searchButton">
-               <property name="text">
-                <string>搜索</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="0">
               <widget class="QLineEdit" name="searchLine">
                <property name="sizePolicy">
@@ -101,6 +94,20 @@
                </property>
                <property name="placeholderText">
                 <string>请输入你想查询的插件</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="searchButton">
+               <property name="text">
+                <string>搜索</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QCheckBox" name="checkBox">
+               <property name="text">
+                <string>关闭 Bing 翻译</string>
                </property>
               </widget>
              </item>
@@ -127,7 +134,7 @@
       <item>
        <widget class="Line" name="line">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -143,7 +150,7 @@
          </sizepolicy>
         </property>
         <property name="sizeAdjustPolicy">
-         <enum>QAbstractScrollArea::AdjustIgnored</enum>
+         <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
         </property>
         <property name="showDropIndicator" stdset="0">
          <bool>true</bool>
