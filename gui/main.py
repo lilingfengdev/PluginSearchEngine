@@ -13,18 +13,17 @@ class Worker(QObject):
         super().__init__()
         # print("000")
 
-    def work(self, keyword):
-        try:
-            results = search(keyword)
-            print("searching...")
-            self._signal.emit(results)
-            print("emitted signal _")
-        except Exception as e:
-            print(e)
+    def work(self, lyst: list):
+        keyword, boolean = lyst[0], lyst[1]
+        print("Working")
+        results = search(keyword, boolean)
+        print("searching...")
+        self._signal.emit(results)
+        print("emitted signal _")
 
 
 class MainWindow(QMainWindow):
-    a = Signal(str)
+    a = Signal(list)
 
     def __init__(self):
         super().__init__()
@@ -40,13 +39,18 @@ class MainWindow(QMainWindow):
         self.worker_thread.start()
 
     def searcher(self):
+        self.ui.progressBar.setMaximum(0)
         keyword = self.ui.searchLine.text()
         self.ui.outputTreeWidget.clear()
-        self.a.emit(keyword)
+        state = self.ui.checkBox.checkState()
+        print(state)
+        translation = True if state == self.ui.checkBox.checkState().Unchecked else False
+        self.a.emit([keyword, translation])
 
     def shower(self, results):
         for result in results:
             title = QTreeWidgetItem(self.ui.outputTreeWidget, [result.title, result.url, result.summary])
+        self.ui.progressBar.setMaximum(100)
 
     def copyurl(self, item):
         # copy a text to the clipboard.

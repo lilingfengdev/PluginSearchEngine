@@ -13,7 +13,7 @@ class SpigotResult(SearchResult):
 
 
 class Spigot(SearchEngine):
-    def search(self, keywords) -> typing.List[SearchResult]:
+    def search(self, keywords, translation=True) -> typing.List[SearchResult]:
         key = translate(keywords, EN)
         data = json.loads(requests.get(
             f"https://fof1092.de/Plugins/SSE/resourceSearchV2.php?SearchText={key}").content)
@@ -23,8 +23,8 @@ class Spigot(SearchEngine):
                 SpigotResult(url=plug["url"], title=plug["name"], summary=plug["tag"], count=plug["download"]["count"]))
         result.sort(key=lambda obj: obj.count, reverse=True)
         result = result[:10]
-        for plug in result:
-            plug.summary = translate(plug.summary)
-            plug.title = translate(plug.title)
-
+        if translation:
+            for plug in result:
+                plug.summary = translate(plug.summary)
+                plug.title = translate(plug.title)
         return result
