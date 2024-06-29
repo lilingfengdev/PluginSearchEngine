@@ -13,16 +13,11 @@ if platform.system() == 'Windows':
     zip.extract("upx-4.2.4-win64/upx.exe", path=os.getcwd())
     shutil.move("upx-4.2.4-win64/upx.exe", os.path.join(os.getcwd(), "upx.exe"))
 
-
-os.system("python3 -m pip install pyyaml install-jdk tqdm psutil requests imageio pygithub rtoml nuitka")
-
 os.mkdir("build")
 os.mkdir("dist")
 
 
-def build(file):
-    filepath = os.path.join(os.getcwd(), "src", file)
-    print(f"build {file}", flush=True)
+def build(filepath):
     args = ["python", "-m", "nuitka", "--onefile", filepath, "--assume-yes-for-downloads", "--output-dir=build"]
     if platform.system() == 'Windows':
         args.append("--windows-icon-from-ico=favicon.png")
@@ -35,7 +30,7 @@ def build(file):
     args.append("--windows-console-mode=disable")
     args.append("--enable-plugin=pyside6")
     subprocess.call(args)
-    filename = os.path.splitext(file)[0]
+    filename = os.path.splitext(os.path.basename(filepath))[0]
     for f in os.listdir(os.path.join(os.getcwd(), "build")):
         if f.startswith(filename) and not os.path.isdir(os.path.join(os.getcwd(), "build", f)):
             shutil.move(os.path.join(os.getcwd(), "build", f), os.path.join(os.getcwd(), "dist", f))
