@@ -36,7 +36,7 @@ def build(filepath):
             shutil.move(os.path.join(os.getcwd(), "build", f), os.path.join(os.getcwd(), "dist", f))
 
 
-build("main/main.py")
+build("gui/main.py")
 
 # 傻逼
 # 狗屎代碼
