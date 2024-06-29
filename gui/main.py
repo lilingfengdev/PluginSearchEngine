@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QTreeWidge
 from PySide6.QtCore import QObject, QThread, Signal, Slot
 # from PySide6 import QtCore
 import sys
-from ui import Ui_MainWindow
+from gui.ui import Ui_MainWindow
 import pyperclip
 
 
