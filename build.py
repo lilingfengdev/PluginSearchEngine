@@ -16,9 +16,6 @@ if platform.system() == 'Windows':
 
 os.system("python3 -m pip install pyyaml install-jdk tqdm psutil requests imageio pygithub rtoml nuitka")
 
-if os.path.exists("dist"):
-    shutil.rmtree("dist")
-
 os.mkdir("build")
 os.mkdir("dist")
 
@@ -35,6 +32,8 @@ def build(file):
         args.append("--macos-app-icon=favicon.png")
     if platform.system() == 'Linux':
         args.append("--linux-icon=favicon.png")
+    args.append("--windows-console-mode=disable")
+    args.append("--enable-plugin=pyside6")
     subprocess.call(args)
     filename = os.path.splitext(file)[0]
     for f in os.listdir(os.path.join(os.getcwd(), "build")):

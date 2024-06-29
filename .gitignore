@@ -155,3 +155,5 @@ Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
 *.stackdump
+/pse.dist
+*.exe
