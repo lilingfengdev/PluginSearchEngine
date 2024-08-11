@@ -13,7 +13,7 @@ class SpigotResult(SearchResult):
 
 
 class Spigot(SearchEngine):
-    def search(self, keywords) -> typing.List[SearchResult]:
+    def search(self, keywords, translation=True) -> typing.List[SearchResult]:
         key = translate(keywords, EN)
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                                  'Chrome/93.0.4577.63 Safari/537.36'}
@@ -25,8 +25,8 @@ class Spigot(SearchEngine):
                 SpigotResult(url=plug["url"], title=plug["name"], summary=plug["tag"], count=plug["download"]["count"]))
         result.sort(key=lambda obj: obj.count, reverse=True)
         result = result[:10]
-        for plug in result:
-            plug.summary = translate(plug.summary)
-            plug.title = translate(plug.title)
-
+        if translation:
+            for plug in result:
+                plug.summary = translate(plug.summary)
+                plug.title = translate(plug.title)
         return result

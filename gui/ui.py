@@ -3,16 +3,24 @@
 ################################################################################
 ## Form generated from reading UI file 'ui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.3
+## Created by: Qt User Interface Compiler version 6.7.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, Qt)
-from PySide6.QtGui import (QAction, QFont, QIcon)
-from PySide6.QtWidgets import (QAbstractScrollArea, QFrame, QGridLayout,
-    QGroupBox, QHBoxLayout, QLineEdit, QProgressBar, QPushButton, QSizePolicy,
-    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QCheckBox, QFrame,
+    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
+    QLineEdit, QMainWindow, QProgressBar, QPushButton,
+    QSizePolicy, QTreeWidget, QTreeWidgetItem, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -20,7 +28,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(779, 594)
         icon = QIcon()
-        icon.addFile(u"o.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"o.ico", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"QTreeView {\n"
 "	border:none\n"
@@ -33,12 +41,12 @@ class Ui_MainWindow(object):
         self.actionSearchType = QAction(MainWindow)
         self.actionSearchType.setObjectName(u"actionSearchType")
         icon1 = QIcon()
-        icon1.addFile(u"icons/radio-circle-marked.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u"icons/radio-circle-marked.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.actionSearchType.setIcon(icon1)
         self.actionSearchName = QAction(MainWindow)
         self.actionSearchName.setObjectName(u"actionSearchName")
         icon2 = QIcon()
-        icon2.addFile(u"icons/radio-circle.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u"icons/radio-circle.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.actionSearchName.setIcon(icon2)
         self.actionTextViewer = QAction(MainWindow)
         self.actionTextViewer.setObjectName(u"actionTextViewer")
@@ -70,29 +78,34 @@ class Ui_MainWindow(object):
         self.groupBox.setFont(font)
         self.groupBox.setMouseTracking(False)
         self.groupBox.setTabletTracking(False)
-        self.groupBox.setContextMenuPolicy(Qt.DefaultContextMenu)
-        self.groupBox.setLayoutDirection(Qt.LeftToRight)
+        self.groupBox.setContextMenuPolicy(Qt.ContextMenuPolicy.DefaultContextMenu)
+        self.groupBox.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.groupBox.setAutoFillBackground(False)
-        self.groupBox.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.groupBox.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
         self.groupBox.setFlat(False)
         self.verticalLayout = QVBoxLayout(self.groupBox)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.searchButton = QPushButton(self.groupBox)
-        self.searchButton.setObjectName(u"searchButton")
-
-        self.gridLayout.addWidget(self.searchButton, 0, 1, 1, 1)
-
         self.searchLine = QLineEdit(self.groupBox)
         self.searchLine.setObjectName(u"searchLine")
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.searchLine.sizePolicy().hasHeightForWidth())
         self.searchLine.setSizePolicy(sizePolicy)
 
         self.gridLayout.addWidget(self.searchLine, 0, 0, 1, 1)
+
+        self.searchButton = QPushButton(self.groupBox)
+        self.searchButton.setObjectName(u"searchButton")
+
+        self.gridLayout.addWidget(self.searchButton, 0, 1, 1, 1)
+
+        self.checkBox = QCheckBox(self.groupBox)
+        self.checkBox.setObjectName(u"checkBox")
+
+        self.gridLayout.addWidget(self.checkBox, 0, 2, 1, 1)
 
 
         self.verticalLayout.addLayout(self.gridLayout)
@@ -112,8 +125,8 @@ class Ui_MainWindow(object):
 
         self.line = QFrame(self.centralwidget)
         self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.HLine)
-        self.line.setFrameShadow(QFrame.Sunken)
+        self.line.setFrameShape(QFrame.Shape.HLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
 
         self.verticalLayout_2.addWidget(self.line)
 
@@ -125,12 +138,12 @@ class Ui_MainWindow(object):
         self.outputTreeWidget.setHeaderItem(__qtreewidgetitem)
         self.outputTreeWidget.setObjectName(u"outputTreeWidget")
         self.outputTreeWidget.setEnabled(True)
-        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.outputTreeWidget.sizePolicy().hasHeightForWidth())
         self.outputTreeWidget.setSizePolicy(sizePolicy1)
-        self.outputTreeWidget.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
+        self.outputTreeWidget.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
         self.outputTreeWidget.setProperty("showDropIndicator", True)
         self.outputTreeWidget.setIndentation(20)
         self.outputTreeWidget.setRootIsDecorated(False)
@@ -181,8 +194,9 @@ class Ui_MainWindow(object):
         self.groupBox.setAccessibleName("")
 #endif // QT_CONFIG(accessibility)
         self.groupBox.setTitle("")
-        self.searchButton.setText(QCoreApplication.translate("MainWindow", u"\u641c\u7d22", None))
         self.searchLine.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8bf7\u8f93\u5165\u4f60\u60f3\u67e5\u8be2\u7684\u63d2\u4ef6", None))
+        self.searchButton.setText(QCoreApplication.translate("MainWindow", u"\u641c\u7d22", None))
+        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"\u5173\u95ed Bing \u7ffb\u8bd1", None))
         self.progressBar.setFormat(QCoreApplication.translate("MainWindow", u"  \u672a\u5f00\u59cb", None))
         ___qtreewidgetitem = self.outputTreeWidget.headerItem()
         ___qtreewidgetitem.setText(2, QCoreApplication.translate("MainWindow", u"\u7b80\u4ecb", None));
