@@ -1,3 +1,5 @@
+import traceback
+
 from core.search import search
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QTreeWidgetItem
 from PySide6.QtCore import QObject, QThread, Signal
@@ -20,7 +22,7 @@ class Worker(QObject):
             self._signal.emit(results)
             print("emitted signal _")
         except Exception as e:
-            print(e)
+            traceback.print_exception(e)
 
 
 class MainWindow(QMainWindow):

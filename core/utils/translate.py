@@ -12,4 +12,3 @@ def translate(text, to_lang=ZH_CN) -> str:
         return translator.process(text, toLang=to_lang)
     except:
         return text
-
